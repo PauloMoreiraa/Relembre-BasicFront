@@ -1,0 +1,172 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, #87caf7, #298aca, #87caf7);
+  background-size: 200% 200%;
+  animation: gradient infinite ease-in-out 3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .card {
+  width: 80%;
+  height: 80%;
+  background-color: #f6f6f6;
+  border-radius: 24px;
+  display: flex;
+}
+@media (max-width: 890px) {
+  .login .card {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 0;
+  }
+}
+.login .card .part1 {
+  width: 70%;
+  height: 100%;
+  background-image: url("../../img/login-cadastro/wallpaper-black.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px 0 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@media (max-width: 890px) {
+  .login .card .part1 {
+    width: 100%;
+    height: 20%;
+    border-radius: 0 0 100% 100%;
+  }
+}
+.login .card .part1 span {
+  font-size: 1.3rem;
+  text-align: center;
+  color: #f6f6f6;
+}
+@media (max-width: 890px) {
+  .login .card .part1 span {
+    font-size: 1rem;
+  }
+}
+.login .card .part1 h1 {
+  font-size: 2.3rem;
+  text-align: center;
+  color: #f6f6f6;
+  font-weight: bolder;
+}
+@media (max-width: 890px) {
+  .login .card .part1 h1 {
+    font-size: 1.5rem;
+  }
+}
+.login .card .part2 {
+  width: 30%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 0 24px 24px 0;
+}
+@media (max-width: 890px) {
+  .login .card .part2 {
+    width: 100%;
+    height: 80%;
+    border-radius: 0;
+  }
+}
+.login .card .part2 .itens {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+.login .card .part2 .itens .logo {
+  margin-top: -100px;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(1);
+  opacity: 0.3;
+}
+@media (max-width: 890px) {
+  .login .card .part2 .itens .logo {
+    padding-top: 20px;
+    margin-top: 0;
+  }
+}
+.login .card .part2 .itens .logo img {
+  width: 120px;
+}
+@media (max-width: 890px) {
+  .login .card .part2 .itens .logo img {
+    width: 80px;
+  }
+}
+@media (max-width: 890px) {
+  .login .card .part2 .itens {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}
+.login .card .part2 .itens span {
+  font-size: 2.3rem;
+  font-weight: bolder;
+  padding-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+}
+@media (max-width: 890px) {
+  .login .card .part2 .itens span {
+    font-size: 2.3rem;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 50px;
+  }
+}
+.login .card .part2 .itens form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.login .card .part2 .itens form a {
+  color: #298aca;
+  width: 100%;
+  background-color: transparent;
+  text-align: right;
+  font-size: 0.8rem;
+  margin-top: -23px;
+}
+.login .card .part2 .itens .crie {
+  text-align: center;
+  width: 100%;
+  padding: 20px 0;
+  color: #222222;
+  text-decoration: none;
+}
+.login .card .part2 .itens .crie span {
+  font-size: 1rem;
+  text-decoration: underline;
+  color: #298aca;
+  padding-bottom: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}/*# sourceMappingURL=style.css.map */

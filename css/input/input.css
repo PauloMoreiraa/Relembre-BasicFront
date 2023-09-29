@@ -1,0 +1,44 @@
+input {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid #c9c9c9;
+  border-radius: 24px;
+  width: 100%;
+  font-size: 1.2rem;
+  padding-left: 44px;
+}
+input:focus {
+  outline: none;
+}
+
+.botao {
+  cursor: pointer;
+  background-color: #298aca;
+  color: #f6f6f6;
+  border: 1px solid #298aca;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+.botao:hover {
+  background-color: #87caf7;
+  border: 1px solid #87caf7;
+  transition: 0.3s;
+}
+@media (max-width: 890px) {
+  .botao {
+    margin-top: 50px;
+  }
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-container i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c9c9c9;
+}/*# sourceMappingURL=input.css.map */

@@ -1,0 +1,47 @@
+@import '../vars.scss';
+
+input{
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #c9c9c9;
+    border-radius: $radius;
+    width: 100%;
+    font-size: $size-t-mb;
+    padding-left: 44px;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.botao{
+    cursor: pointer;
+    background-color: $azul-escuro;
+    color: $branco;
+    border: 1px solid $azul-escuro;
+    padding: 10px 20px;
+    transition: .3s;
+
+    &:hover{
+        background-color: $azul-claro;
+        border: 1px solid $azul-claro;
+        transition: .3s;
+    }
+
+    @media (max-width: 890px){
+        margin-top: 50px;
+    }
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-container i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #c9c9c9;
+}
