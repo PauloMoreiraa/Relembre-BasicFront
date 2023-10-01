@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-
-
-
+@import '../vars.scss';
 
 *{
     padding: 0;
@@ -12,6 +10,8 @@
 
 body{
     overflow-x: hidden;
+    min-height: 100vh;
+    background-color: $branco;
 }
 
 .container{
@@ -19,5 +19,17 @@ body{
     background-color: transparent;
     @media (max-width: 890px){
         padding: 0 5%;
+    }
+}
+
+.titulo{
+    font-size: $size-t-tb;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: bolder;
+
+    @media (max-width: 890px){
+        font-size: $size-t-mb;
     }
 }

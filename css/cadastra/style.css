@@ -1,0 +1,111 @@
+@charset "UTF-8";
+.check input[type=checkbox] {
+  display: none; /* Esconde o checkbox padrão */
+}
+
+.check label {
+  padding-left: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Estilizando o estado não marcado (unchecked) do checkbox */
+.check input[type=checkbox] + label::before {
+  content: ""; /* Não há conteúdo antes do checkbox */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #eee;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* Estilizando o estado marcado (checked) do checkbox */
+.check input[type=checkbox]:checked + label::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #87caf7;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 4px;
+}
+
+.cadastra {
+  width: 100%;
+  height: auto;
+  background-color: #f6f6f6;
+  padding-top: 15vh;
+  padding-bottom: 5vh;
+}
+.cadastra form .box {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+.cadastra form .box #foto {
+  display: none;
+}
+.cadastra form .box .foto {
+  width: 300px;
+  height: 50px;
+  background-color: #eee;
+  border-radius: 8px;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.cadastra form .box .foto img {
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  width: 40px;
+  height: 40px;
+}
+.cadastra form .box .btn {
+  background-color: #87caf7;
+  width: 150px;
+  cursor: pointer;
+  color: #f6f6f6;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+.cadastra form .box .btn:hover {
+  background-color: #298aca;
+  transition: 0.3s;
+}
+.cadastra form .box .check {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.cadastra form .box .check input {
+  width: 30px;
+}
+.cadastra form .box label, .cadastra form .box span {
+  font-size: 1rem;
+}
+.cadastra form .box input, .cadastra form .box textarea {
+  width: 30%;
+  padding: 7px;
+  border-radius: 8px;
+  border: none;
+  background-color: #eeeeee;
+  font-size: 1rem;
+}
+.cadastra form .box input:focus, .cadastra form .box textarea:focus {
+  outline: none;
+}
+@media (max-width: 890px) {
+  .cadastra form .box input, .cadastra form .box textarea {
+    width: 100%;
+  }
+}/*# sourceMappingURL=style.css.map */

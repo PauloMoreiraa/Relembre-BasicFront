@@ -1,0 +1,73 @@
+.cadastrados {
+  width: 100%;
+  height: auto;
+  background-color: #f6f6f6 !important;
+  padding-bottom: 50px;
+}
+@media (max-width: 890px) {
+  .cadastrados #med {
+    width: 100%;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.cadastrados .cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+@media (max-width: 890px) {
+  .cadastrados .cards {
+    align-items: center;
+    justify-content: center;
+  }
+}
+.cadastrados .cards .card {
+  width: 20%;
+  min-width: 300px;
+  min-height: 200px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.cadastrados .cards .card .nome {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+.cadastrados .cards .card .horario {
+  font-style: italic;
+}
+.cadastrados .cards .card .descricao {
+  padding: 5px 0;
+}
+.cadastrados .cards .card .botoes {
+  display: flex;
+  background-color: transparent;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+}
+.cadastrados .cards .card .botoes .editar, .cadastrados .cards .card .botoes .excluir {
+  padding: 5px 15px;
+  background-color: #f6f6f6;
+  color: #222222;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cadastrados .cards .card .botoes .editar:hover {
+  background-color: rgb(235, 227, 121);
+  transition: 0.3s;
+}
+.cadastrados .cards .card .botoes .excluir:hover {
+  background-color: rgb(235, 121, 121);
+  transition: 0.3s;
+  color: #f6f6f6;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,29 @@
+@import '../vars.scss';
+
+.galeria{
+  
+
+    .fotos{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+
+        @media (max-width: 890px){
+            justify-content: center;
+        }
+
+        .foto-salva{
+            width: 300px;
+            height: 300px;
+            background-color: #eee;
+            border-radius: $radius-2;
+            cursor: pointer;
+
+            @media (max-width: 890px){
+                width: 100%;
+            }
+        }
+    }
+    
+}

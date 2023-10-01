@@ -47,6 +47,16 @@ nav{
 
         li{
 
+            .menu{
+                background-color: transparent;
+                color: $azul-escuro;
+
+                &:hover{
+                    background-color: transparent;
+                    color: $azul-claro;
+                }
+            }
+
             a{
                 text-decoration: none;
                 color: #e04141; 
