@@ -1,99 +1,203 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/nav/style.css">
-    <link rel="stylesheet" href="css/geral/style.css">
-    <link rel="stylesheet" href="css/main/style.css">
-    <link rel="stylesheet" href="css/cadastra/style.css">
-    <link rel="stylesheet" href="css/cadastrados/style.css">
+    <link rel="stylesheet" href="css/nav/style.css" />
+    <link rel="stylesheet" href="css/geral/style.css" />
+    <link rel="stylesheet" href="css/main/style.css" />
+    <link rel="stylesheet" href="css/cadastra/style.css" />
+    <link rel="stylesheet" href="css/cadastrados/style.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+  </head>
+  <body onload="carregarMedicamentos()">
     <header>
-        <nav>
-            <ul>
-                <li><a href="home.html" class="menu"><i class="fas fa-arrow-left"></i> Voltar</a></li>
-                <li><a href="index.html">Sair <i class="fas fa-sign-out-alt"></i></a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>
+            <a href="home.html" class="menu"
+              ><i class="fas fa-arrow-left"></i> Voltar</a
+            >
+          </li>
+          <li>
+            <a href="index.html">Sair <i class="fas fa-sign-out-alt"></i></a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <section class="cadastra container">
-        <span class="titulo">Cadastrar novo medicamento&nbsp;<ion-icon name="medkit-outline"></ion-icon></span>
+      <span class="titulo"
+        >Cadastrar novo medicamento&nbsp;<ion-icon
+          name="medkit-outline"
+        ></ion-icon
+      ></span>
 
-        <form action="#">
-            <div class="box">
-                <label for="nome">Nome do Medicamento:</label>
-                <input type="text" id="nome" name="nome" required />
-            </div>
-            <div class="box">
-                <label for="horario">Horário:</label>
-                <input type="time" id="horario" name="horario" required />
-            </div>
-            <div class="box">
-                <label for="nome">Descrição do Medicamento:</label>
-                <textarea name="descricao" id="descricao"></textarea>
-            </div>
-           <div class="box">
-                <span>Dias da semana:</span>
-                <div class="check">
-                    <input type="checkbox" id="domingo" value="">
-                    <label for="domingo">Domingo</label>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="segunda" value="">
-                    <label for="segunda">Segunda-Feira</label>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="terca" value="">
-                    <label for="terca">Terça-Feira</label>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="quarta" value="">
-                    <label for="quarta">Quarta-Feira</label>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="quinta" value="">
-                    <label for="quinta">Quinta-Feira</label>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="sexta" value="">
-                    <label for="sexta">Sexta-Feira</label>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="sabado" value="">
-                    <label for="sabado">Sábado</label>
-                </div>
-           </div>
-           <div class="box">
-            <input class="btn" type="submit" value="Cadastrar">
-           </div>
-        </form>
+      <form>
+        <div class="box">
+          <label for="nome">Nome do Medicamento:</label>
+          <input type="text" id="nome" name="nome" required />
+        </div>
+        <div class="box">
+          <label for="horario">Horário:</label>
+          <input type="time" id="horario" name="horario" required />
+        </div>
+        <div class="box">
+          <label for="nome">Descrição do Medicamento:</label>
+          <textarea name="descricao" id="descricao"></textarea>
+        </div>
+        <div class="box">
+          <span>Dias da semana:</span>
+          <div class="check">
+            <input type="checkbox" id="domingo" value="1" />
+            <label for="domingo">Domingo</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="segunda" value="2" />
+            <label for="segunda">Segunda-Feira</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="terca" value="3" />
+            <label for="terca">Terça-Feira</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="quarta" value="4" />
+            <label for="quarta">Quarta-Feira</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="quinta" value="5" />
+            <label for="quinta">Quinta-Feira</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="sexta" value="6" />
+            <label for="sexta">Sexta-Feira</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="sabado" value="7" />
+            <label for="sabado">Sábado</label>
+          </div>
+        </div>
+        <div class="box">
+          <input
+            class="btn"
+            type="button"
+            onclick="cadastrarLembrete(this.parentElement.parentElement)"
+            value="Cadastrar"
+          />
+        </div>
+      </form>
     </section>
 
     <section class="cadastrados container">
-        <span class="titulo" id="med">Medicamentos cadastrados:</span>
-        <div class="cards">
-            <div class="card">
-                <span class="nome">Nome</span>
-                <span class="horario">Horário</span>
-                <p class="descricao">Descrição Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis non error illum similique ipsam beatae sunt ut unde cupiditate, alias, expedita eaque odio deleniti blanditiis optio delectus ipsa ratione exercitationem.</p>
-                <div class="botoes">
-                    <a href="#" class="editar">Editar&nbsp;<ion-icon name="create-outline"></ion-icon></a>
-                    <a href="#"  class="excluir">Excluir&nbsp;<ion-icon name="trash-outline"></ion-icon></a>
-                </div>
-            </div>
-           
-        </div>
-        
+      <span class="titulo" id="med">Medicamentos cadastrados:</span>
+      <div class="cards" id="cards"></div>
     </section>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      async function cadastrarLembrete(form) {
+        const { descricao, nome, horario } = form;
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const diasMarcados = [];
+        checkboxes.forEach((checkbox) => {
+          if (checkbox.checked) diasMarcados.push(checkbox.value);
+        });
+
+        console.log(descricao, nome, horario, diasMarcados);
+        const user = JSON.parse(localStorage.getItem("user"));
+        diasMarcados.forEach(async (diaSemana) => {
+          fetch("http://localhost:3000/lembretes/" + user.id, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              descricao: descricao.value,
+              horario: horario.value,
+              nome: nome.value,
+              diaSemanaLembrete: diaSemana,
+            }),
+          });
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
+
+      async function carregarMedicamentos() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const req = await fetch("http://localhost:3000/lembretes/" + user.id);
+        if (req.status == 200) {
+          const res = await req.json();
+
+          res.forEach((lembrete) => {
+            cards.innerHTML += `
+                <div class="card">
+                <span class="nome">Nome: ${lembrete.nome}</span>
+                <span class="horario">Horário: ${lembrete.horario}</span>
+                <span class="horario">Dia Semana: ${getDiaSemana(
+                  lembrete.diaSemana
+                )}</span>
+                <p class="descricao">
+                    ${lembrete.descricao}
+                </p>
+                <div class="botoes">
+                    <a onclick='editarLembrete(${lembrete.id})' class="editar"
+                    >Editar&nbsp;<ion-icon name="create-outline"></ion-icon
+                    ></a>
+                    <a onclick='removerLembrete(${lembrete.id})' class="excluir"
+                    >Excluir&nbsp;<ion-icon name="trash-outline"></ion-icon
+                    ></a>
+                </div>
+                </div>
+                `;
+          });
+        }
+        // TODO: Nenhum medicamento cadastrado
+      }
+
+      async function editarLembrete(idLembrete) {
+        // TODO: Editar lembrete
+      }
+
+      async function removerLembrete(idLembrete) {
+        // TODO: Remover lembrete
+      }
+
+      function getDiaSemana(numero) {
+        switch (numero) {
+          case 1:
+            return "Domingo";
+          case 2:
+            return "Segunda-feira";
+          case 3:
+            return "Terça-feira";
+          case 4:
+            return "Quarta-feira";
+          case 5:
+            return "Quinta-feira";
+          case 6:
+            return "Sexta-feira";
+          case 7:
+            return "Sábado";
+          default:
+            return "Número inválido";
+        }
+      }
+    </script>
+  </body>
 </html>

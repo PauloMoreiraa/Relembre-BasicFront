@@ -29,10 +29,10 @@
                     </div>
                     <span>Cadastre-se</span>
 
-                    <form action="#" method="#">
+                    <form>
                         <div class="input-container">
                             <i class="fas fa-user"></i> 
-                            <input type="text" placeholder="Nome de usuário" name="name" required />
+                            <input type="text" placeholder="Nome de usuário" name="name" required min="4" />
                         </div>
                         <div class="input-container">
                             <i class="fas fa-envelope"></i>
@@ -40,13 +40,13 @@
                         </div>
                         <div class="input-container">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Senha" name="senha" required />
+                            <input type="password" placeholder="Senha" name="senha" required minlength="8" />
                         </div>
                         <div class="input-container">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Confirmar senha" name="senha" required />
+                            <input type="password" placeholder="Confirmar senha" name="confSenha" minlength="8" required />
                         </div>
-                        <input type="submit" class="botao" value="Criar Conta" />
+                        <input type="button" onclick="cadastrar(this.parentElement)" class="botao" value="Criar Conta" />
                     </form>
                     
                     <a class="crie" href="index.html">Já possui conta? <span>Entre agora!</span></a>
@@ -56,6 +56,51 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+
+        /**
+         * @param {HTMLFormElement} form 
+         * */
+        function cadastrar(form){
+
+            const { name, email, senha, confSenha } = form
+            if(name.value && email.value && senha.value){
+                const confirmacaoSenha = confSenha.value == senha.value
+                if(confirmacaoSenha){
+                    cadastrarUsuarioBack(name.value, email.value, senha.value)
+                }else{
+                    alert("Confirmação de senha não coincide!")
+                }
+            }else{
+                alert("Preencha todos os dados corretamente!")
+            }
+        }
+
+        async function cadastrarUsuarioBack(nome, email, senha){
+            const req = await fetch("http://localhost:3000/users", {
+                body: JSON.stringify({nome, email, senha}),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            console.log(req)
+            if(req.status == 201){
+                const res = await req.json()
+                console.table({res})
+                alert(`Usuario cadastrado com ID = ${res.id}!`)
+            }else if(req.status == 409){
+                alert("Email ja cadastrado")
+            }else{
+                alert("Ocorreu um erro!")
+                console.error(req)
+            }
+        }
+
+    </script>
 
     
 </body>
