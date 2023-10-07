@@ -82,7 +82,7 @@
             <label for="sabado">Sábado</label>
           </div>
         </div>
-        <div class="box">
+        <div class="box" id="botoes">
           <input
             class="btn"
             type="button"
@@ -132,10 +132,8 @@
             }),
           });
         });
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+        alert("Lembrete(s) criado(s) com sucesso");
+        reloadPage();
       }
 
       async function carregarMedicamentos() {
@@ -144,19 +142,25 @@
         if (req.status == 200) {
           const res = await req.json();
 
+          console.table(res);
+
           res.forEach((lembrete) => {
             cards.innerHTML += `
                 <div class="card">
                 <span class="nome">Nome: ${lembrete.nome}</span>
-                <span class="horario">Horário: ${lembrete.horario}</span>
-                <span class="horario">Dia Semana: ${getDiaSemana(
+                <span class="horario">Horário: ${lembrete.horario}h</span>
+                <span class="horario">Dia: ${getDiaSemana(
                   lembrete.diaSemana
                 )}</span>
                 <p class="descricao">
                     ${lembrete.descricao}
                 </p>
                 <div class="botoes">
-                    <a onclick='editarLembrete(${lembrete.id})' class="editar"
+                    <a onclick='habilitarEdicao(${lembrete.id},"${
+              lembrete.nome
+            }","${lembrete.descricao}","${lembrete.horario}",${
+              lembrete.diaSemana
+            })' class="editar"
                     >Editar&nbsp;<ion-icon name="create-outline"></ion-icon
                     ></a>
                     <a onclick='removerLembrete(${lembrete.id})' class="excluir"
@@ -170,12 +174,107 @@
         // TODO: Nenhum medicamento cadastrado
       }
 
-      async function editarLembrete(idLembrete) {
-        // TODO: Editar lembrete
+      function voltarCadastro() {
+        const { descricao, nome, horario } = document.querySelector("form");
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          if (checkbox.checked) checkbox.checked = false;
+        });
+
+        descricao.value = "";
+        nome.value = "";
+        horario.value = "";
+
+        botoes.innerHTML = `
+          <input
+              class="btn"
+              type="button"
+              onclick="cadastrarLembrete(this.parentElement.parentElement)"
+              value="Cadastrar"
+            />
+        `;
+      }
+
+      function habilitarEdicao(
+        id,
+        nomeLembrete,
+        descricaoLembrete,
+        horarioLembrete,
+        diaSemanaLembrete
+      ) {
+        const { descricao, nome, horario } = document.querySelector("form");
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          if (checkbox.value == diaSemanaLembrete) checkbox.checked = true;
+          else if (checkbox.checked) checkbox.checked = false;
+        });
+
+        descricao.value = descricaoLembrete;
+        nome.value = nomeLembrete;
+        horario.value = horarioLembrete;
+
+        botoes.innerHTML = `
+          <input
+            class="btn"
+            type="button"
+            onclick="editarLembrete(${id}, this.parentElement.parentElement)"
+            value="Atualizar"
+          />
+
+          <input
+            class="btn"
+            type="button"
+            onclick="voltarCadastro()"
+            value="Voltar cadastro"
+          />
+        `;
+      }
+
+      async function editarLembrete(id, form) {
+        const { descricao, nome, horario } = form;
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const diasMarcados = [];
+        checkboxes.forEach((checkbox) => {
+          if (checkbox.checked) diasMarcados.push(checkbox.value);
+        });
+
+        console.log(descricao, nome, horario, diasMarcados);
+        const user = JSON.parse(localStorage.getItem("user"));
+        diasMarcados.forEach(async (diaSemana) => {
+          fetch("http://localhost:3000/lembretes/" + id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              descricao: descricao.value,
+              horario: horario.value,
+              nome: nome.value,
+              diaSemanaLembrete: diaSemana,
+            }),
+          });
+        });
+        alert("Lembrete atualizado com sucesso");
+        reloadPage();
       }
 
       async function removerLembrete(idLembrete) {
-        // TODO: Remover lembrete
+        const confirm = window.confirm(
+          "Deseja realmente excluir este lembrete?"
+        );
+
+        if (confirm) {
+          const req = await fetch(
+            "http://localhost:3000/lembretes/" + idLembrete,
+            {
+              method: "DELETE",
+            }
+          );
+          if (req.status == 200) {
+            alert("Lembrete deletado com sucesso");
+            reloadPage();
+          }
+        }
       }
 
       function getDiaSemana(numero) {
@@ -197,6 +296,12 @@
           default:
             return "Número inválido";
         }
+      }
+
+      function reloadPage() {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
     </script>
   </body>
