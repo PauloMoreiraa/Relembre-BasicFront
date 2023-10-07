@@ -16,16 +16,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
   </head>
-  <style>
-    .hidden {
-      display: none;
-    }
-    .preview {
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      margin: 10px 0;
-    }
-  </style>
   <body onload="carregarGaleria()">
     <header>
       <nav>
@@ -119,7 +109,7 @@
             img = ev.target.result.split(",")[1];
             const prefixImage = "data:image/png;base64,";
 
-            preview.classList.toggle("hidden");
+            preview.classList.remove("hidden");
 
             preview.src = prefixImage + img;
 
@@ -149,6 +139,10 @@
           }).then((req) => {
             if ([200, 201].includes(req.status)) {
               alert("Imagem salva com sucesso!");
+
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
             } else {
               alert("Algo deu errado");
               console.error(req);
@@ -170,11 +164,33 @@
 
         res.map(async (itemGaleria) => {
           fotos.innerHTML += `
-            <div class="foto-salva">
-                <img src='data:image/png;base64,${itemGaleria.imagem}' alt='${itemGaleria.descricao}'/>    
+            <div class="foto-salva" onclick="abrirModalGaleria('${itemGaleria.imagem}', '${itemGaleria.descricao}')">
+                <img src='data:image/png;base64,${itemGaleria.imagem}' title='${itemGaleria.descricao}' alt='${itemGaleria.descricao}'/>    
             </div>
             `;
         });
+      }
+
+      function abrirModalGaleria(foto, descricao) {
+        document.body.innerHTML += `
+          <section class='modal'>
+            <i class="fa fa-times close"
+              onclick='closeModal()'
+            aria-hidden="true"></i>
+            <div class='modalCentro'>
+              <img 
+                src='data:image/png;base64,${foto}'
+                alt='${descricao}'
+                title='${descricao}'
+                />
+                <p>${descricao}</p>
+            </div>
+          </section>
+        `;
+      }
+
+      function closeModal() {
+        document.body.querySelector(".modal").remove();
       }
     </script>
   </body>
