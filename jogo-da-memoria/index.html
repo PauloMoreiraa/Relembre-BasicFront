@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo da Memoria</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/svg/3132/3132772.svg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/card.css" />
+    <link rel="stylesheet" href="styles/win.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+
+    <!--CSS Geral-->
+    <link rel="stylesheet" href="../css/nav/style.css">
+    <link rel="stylesheet" href="../css/geral/style.css">
+    <link rel="stylesheet" href="../css/main/style.css">
+    <link rel="stylesheet" href="../css/cadastra/style.css">
+    <link rel="stylesheet" href="../css/cadastrados/style.css">
+    <link rel="stylesheet" href="../css/galeria/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  </head>
+  <body>
+
+    <header>
+      <nav>
+          <ul>
+              <li><a href="../home.html" class="menu"><i class="fas fa-arrow-left"></i> Voltar</a></li>
+              <li><a href="../index.html">Sair <i class="fas fa-sign-out-alt"></i></a></li>
+          </ul>
+      </nav>
+  </header>
+   
+    <div id="vitoria" class="container">
+      <div id="container">
+        <h1>Muito bem!</h1>
+        <p>Você encontrou todos os pares com</p>
+        <h2><span id="movimentosvitoria">0</span> ERROS</h2>
+        <a href="index.html">Jogar Novamente</a>
+      </div>
+    </div>
+    <section id="responsivo">
+      <h2>Erros <span id="movimentos2">0</span></h2>
+      <a href="index.html">Reiniciar</a>
+    </section>
+
+    <div class="corpo">
+      <section id="esq">
+        <h2>Erros <span id="movimentos">0</span></h2>
+        <a href="index.html">Reiniciar</a>
+      </section>
+      <section class="jogo">
+        <div class="card" data-nome = "sapo">
+          <img
+            class="frente"
+            src="https://static.vecteezy.com/system/resources/previews/019/550/037/original/frog-cute-cartoon-character-png.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "sapo">
+          <img
+            class="frente"
+            src="https://static.vecteezy.com/system/resources/previews/019/550/037/original/frog-cute-cartoon-character-png.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "vaca">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/2395/2395765.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "vaca">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/2395/2395765.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "canguru">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/4395/4395882.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "canguru">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/4395/4395882.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "leao">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/1998/1998713.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "leao">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/1998/1998713.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "passaro">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/2219/2219694.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "passaro">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/2219/2219694.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "elefante">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/490/490001.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+        <div class="card" data-nome = "elefante">
+          <img
+            class="frente"
+            src="https://cdn-icons-png.flaticon.com/512/490/490001.png"
+            alt="card"
+          />
+          <h1>?</h1>
+        </div>
+      </section>
+
+    </div>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
