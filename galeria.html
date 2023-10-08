@@ -1,181 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/nav/style.css" />
-    <link rel="stylesheet" href="css/geral/style.css" />
-    <link rel="stylesheet" href="css/main/style.css" />
-    <link rel="stylesheet" href="css/cadastra/style.css" />
-    <link rel="stylesheet" href="css/cadastrados/style.css" />
-    <link rel="stylesheet" href="css/galeria/style.css" />
+    <link rel="stylesheet" href="css/nav/style.css">
+    <link rel="stylesheet" href="css/geral/style.css">
+    <link rel="stylesheet" href="css/main/style.css">
+    <link rel="stylesheet" href="css/cadastra/style.css">
+    <link rel="stylesheet" href="css/cadastrados/style.css">
+    <link rel="stylesheet" href="css/galeria/style.css">
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-  </head>
-  <style>
-    .hidden {
-      display: none;
-    }
-    .preview {
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      margin: 10px 0;
-    }
-  </style>
-  <body onload="carregarGaleria()">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+</head>
+<body>
     <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="home.html" class="menu"
-              ><i class="fas fa-arrow-left"></i> Voltar</a
-            >
-          </li>
-          <li>
-            <a href="index.html">Sair <i class="fas fa-sign-out-alt"></i></a>
-          </li>
-        </ul>
-      </nav>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="menu"><i class="fas fa-arrow-left"></i> Voltar</a></li>
+                <li><a href="index.html">Sair <i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+        </nav>
     </header>
 
     <section class="cadastra container">
-      <span class="titulo"
-        >Salvar nova foto&nbsp;<ion-icon name="image-outline"></ion-icon
-      ></span>
+        <span class="titulo">Salvar nova foto&nbsp;<ion-icon name="image-outline"></ion-icon></span>
 
-      <form>
-        <div class="box">
-          <label for="foto" class="foto">
-            <img
-              src="https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-PNG-Photos.png"
-              alt=""
-            />
-            <span class="foto" id="textPreview">Escolher imagem</span>
-          </label>
-          <input
-            type="file"
-            id="foto"
-            name="foto"
-            onchange="changeFoto(this)"
-            required
-          />
-          <img
-            src=""
-            id="preview"
-            width="300"
-            height="300"
-            class="hidden preview"
-          />
-        </div>
-        <div class="box">
-          <label for="nome">Descrição da Foto:</label>
-          <textarea name="descricao" id="descricao"></textarea>
-        </div>
-        <div class="box">
-          <input
-            class="btn"
-            type="button"
-            onclick="addImageGallery(this.parentElement.parentElement)"
-            value="Salvar"
-          />
-        </div>
-      </form>
+        <form action="#">
+            <div class="box">
+                <label for="foto" class="foto">
+                    <img src="https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-PNG-Photos.png" alt="">
+                    <span class="foto">Escolher imagem</span>
+                </label>
+                <input type="file" id="foto" name="foto" required />
+            </div>
+            <div class="box">
+                <label for="nome">Descrição da Foto:</label>
+                <textarea name="descricao" id="descricao"></textarea>
+            </div>
+           <div class="box">
+            <input class="btn" type="submit" value="Salvar">
+           </div>
+        </form>
     </section>
 
     <section class="galeria container">
-      <span class="titulo">Minha Galeria</span>
-      <span>Você ainda não salvou nenhuma foto</span>
-      <div class="fotos" id="fotos"></div>
+        <span class="titulo">Minha Galeria</span>
+        <span>Você ainda não salvou nenhuma foto</span>
+        <div class="fotos">
+            <div class="foto-salva"></div>
+            <div class="foto-salva"></div>
+            <div class="foto-salva"></div>
+        </div>
+        
     </section>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
 
-    <script>
-      let img = null;
-      /**
-       * @param {HTMLInputElement} input
-       */
-      const changeFoto = (input) => {
-        const files = input.files;
-        if (files.length > 0 && files[0]) {
-          // fazer preview
-          const file = files[0];
-          const reader = new FileReader();
-
-          reader.onload = (ev) => {
-            console.log(ev.target);
-            img = ev.target.result.split(",")[1];
-            const prefixImage = "data:image/png;base64,";
-
-            preview.classList.toggle("hidden");
-
-            preview.src = prefixImage + img;
-
-            textPreview.textContent = file.name;
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-
-      /**
-       * @param {HTMLFormElement} form
-       */
-      const addImageGallery = (form) => {
-        const { descricao } = form;
-        console.log(descricao);
-        if (descricao.value && img != null) {
-          const user = JSON.parse(localStorage.getItem("user"));
-          fetch("http://localhost:3000/gallery-images/" + user.id, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              imagem: img,
-              descricao: descricao.value,
-            }),
-          }).then((req) => {
-            if ([200, 201].includes(req.status)) {
-              alert("Imagem salva com sucesso!");
-            } else {
-              alert("Algo deu errado");
-              console.error(req);
-            }
-          });
-        } else {
-          alert("Preencha os dados corretamente");
-        }
-      };
-
-      async function carregarGaleria() {
-        const user = JSON.parse(localStorage.getItem("user"));
-        const req = await fetch(
-          "http://localhost:3000/gallery-images/" + user.id
-        );
-        console.log(req);
-        const res = await req.json();
-        console.log(res);
-
-        res.map(async (itemGaleria) => {
-          fotos.innerHTML += `
-            <div class="foto-salva">
-                <img src='data:image/png;base64,${itemGaleria.imagem}' alt='${itemGaleria.descricao}'/>    
-            </div>
-            `;
-        });
-      }
-    </script>
-  </body>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
 </html>

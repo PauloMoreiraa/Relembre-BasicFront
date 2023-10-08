@@ -50,6 +50,7 @@ nav{
             .menu{
                 background-color: transparent;
                 color: $azul-escuro;
+                z-index: 9999999;
 
                 &:hover{
                     background-color: transparent;

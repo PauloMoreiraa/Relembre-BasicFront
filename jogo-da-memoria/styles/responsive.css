@@ -94,11 +94,7 @@
 
 @media (max-width: 550px) {
 
-    header nav a {
-
-        display: none;
-
-    }
+  
 
     .jogo {
         padding: 10px;
@@ -116,9 +112,6 @@
         width:80px; 
         height:80px;
     }
-
-   
-
 
    
 

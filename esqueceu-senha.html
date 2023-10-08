@@ -1,80 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="css/geral/style.css" />
-    <link rel="stylesheet" href="css/form/style.css" />
-    <link rel="stylesheet" href="css/input/input.css" />
+    <link rel="stylesheet" href="css/geral/style.css">
+    <link rel="stylesheet" href="css/form/style.css">
+    <link rel="stylesheet" href="css/input/input.css">
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+
+</head>
+<body>
     <div class="login">
-      <div class="card">
-        <div class="part1">
-          <span>Bem Vindo(a) ao</span>
-          <h1>Relembre</h1>
-        </div>
-        <div class="part2">
-          <div class="itens container">
-            <div class="logo">
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/019/053/728/original/human-brain-symbol-icon-png.png"
-                alt=""
-              />
+        <div class="card">
+            <div class="part1">
+                <span>Bem Vindo(a) ao</span>
+                <h1>Relembre</h1>
             </div>
-            <span>Recuperar Conta</span>
+            <div class="part2">
+                <div class="itens container">
+                    <div class="logo">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/053/728/original/human-brain-symbol-icon-png.png" alt="">
+                    </div>
+                    <span>Recuperar Conta</span>
 
-            <form>
-              <div class="input-container">
-                <i class="fas fa-user"></i>
-                <input
-                  type="email"
-                  placeholder="Digite o email da conta"
-                  name="email"
-                  required
-                />
-              </div>
-              <input
-                type="button"
-                onclick="enviarSenhaEmail(this.parentElement)"
-                class="botao"
-                value="Enviar Email"
-              />
-            </form>
-            <a class="crie" href="index.html"
-              >Sabe sua senha? <span>Entre agora!</span></a
-            >
-          </div>
+                    <form action="#" method="#">
+                        <div class="input-container">
+                            <i class="fas fa-user"></i>
+                            <input type="email" placeholder="Digite o email da conta" name="email" required />
+                        </div>
+                        <input type="submit" class="botao" value="Enviar Email" />
+                    </form>
+                    <a class="crie" href="index.html">Sabe sua senha? <span>Entre agora!</span></a>
+                    
+                </div>
+                
+            </div>
         </div>
-      </div>
     </div>
-  </body>
 
-  <script>
-    async function enviarSenhaEmail(form) {
-      const { email } = form;
-
-      if (email.value) {
-        const req = await fetch(
-          `http://localhost:3000/users/email/${email.value}/recuperarSenha`
-        );
-        if (req.status == 202) {
-          alert("Enviamos sua senha no seu email! Guarde ela bem");
-        } else {
-          alert("Conta nao encontrada");
-        }
-        email.value = "";
-      } else {
-        alert("Email invalido");
-      }
-    }
-  </script>
+    
+</body>
 </html>

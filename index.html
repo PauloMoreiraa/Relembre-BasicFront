@@ -1,107 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="css/geral/style.css" />
-    <link rel="stylesheet" href="css/form/style.css" />
-    <link rel="stylesheet" href="css/input/input.css" />
+    <link rel="stylesheet" href="css/geral/style.css">
+    <link rel="stylesheet" href="css/form/style.css">
+    <link rel="stylesheet" href="css/input/input.css">
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+
+</head>
+<body>
     <div class="login">
-      <div class="card">
-        <div class="part1">
-          <span>Bem Vindo(a) ao</span>
-          <h1>Relembre</h1>
-        </div>
-        <div class="part2">
-          <div class="itens container">
-            <div class="logo">
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/019/053/728/original/human-brain-symbol-icon-png.png"
-                alt=""
-              />
+        <div class="card">
+            <div class="part1">
+                <span>Bem Vindo(a) ao</span>
+                <h1>Relembre</h1>
             </div>
-            <span>Login</span>
+            <div class="part2">
+                <div class="itens container">
+                    <div class="logo">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/053/728/original/human-brain-symbol-icon-png.png" alt="">
+                    </div>
+                    <span>Login</span>
 
-            <form>
-              <div class="input-container">
-                <i class="fas fa-user"></i>
-                <input type="email" placeholder="Email" name="email" required />
-              </div>
-              <div class="input-container">
-                <i class="fas fa-lock"></i>
-                <input
-                  type="password"
-                  placeholder="Senha"
-                  name="senha"
-                  required
-                />
-              </div>
-              <a href="esqueceu-senha.html">Esqueceu a senha?</a>
-              <input
-                type="button"
-                onclick="logar(this.parentElement)"
-                class="botao"
-                name="btn"
-                value="Entrar"
-              />
-            </form>
-            <a class="crie" href="cadastro.html"
-              >Não tem uma conta? <span>Crie agora!</span></a
-            >
-          </div>
+                    <form action="#" method="#">
+                        <div class="input-container">
+                            <i class="fas fa-user"></i>
+                            <input type="email" placeholder="Email" name="email" required />
+                        </div>
+                        <div class="input-container">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Senha" name="senha" required />
+                        </div>
+                        <a href="esqueceu-senha.html">Esqueceu a senha?</a>
+                        <input type="submit" class="botao" value="Entrar" />
+                    </form>
+                    <a class="crie" href="cadastro.html">Não tem uma conta? <span>Crie agora!</span></a>
+                    
+                </div>
+                
+            </div>
         </div>
-      </div>
     </div>
 
-    <script>
-      const logar = (form) => {
-        const { email, senha, btn } = form;
-
-        if (email.value && senha.value) {
-          btn.disabled = true;
-          fetch("http://localhost:3000/users/login", {
-            body: JSON.stringify({ email: email.value, senha: senha.value }),
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((req) => {
-              console.log(req);
-              if (req.status == 200) {
-                req
-                  .json()
-                  .then((res) => {
-                    window.localStorage.setItem("user", JSON.stringify(res));
-                  })
-                  .finally(() => {
-                    window.location.href = "home.html";
-                  });
-              } else {
-                alert("Usuario nao encontrado");
-              }
-            })
-            .catch((err) => {
-              console.error(err);
-            })
-            .finally(() => {
-              btn.disabled = false;
-            });
-        } else {
-          alert("Preencha os campos corretamente");
-          btn.disabled = false;
-        }
-      };
-    </script>
-  </body>
+    
+</body>
 </html>

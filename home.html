@@ -15,7 +15,7 @@
     <header>
         <nav>
             <ul>
-                <li id="greetings">Olá, NOME</li>
+                <li>Olá, NOME</li>
                 <li><a href="index.html">Sair <i class="fas fa-sign-out-alt"></i></a></li>
             </ul>
         </nav>
@@ -35,12 +35,5 @@
         </div>
     </main>
     
-
-    <script>
-        const greetings = document.querySelector("#greetings")
-
-        const user = JSON.parse(localStorage.getItem(`user`))
-        greetings.textContent = `Olá, ${user.nome}`
-    </script>
 </body>
 </html>
