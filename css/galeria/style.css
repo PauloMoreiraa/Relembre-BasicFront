@@ -1,12 +1,12 @@
+.galeria img {
+  width: 100%;
+  height: 100%;
+}
 .galeria .fotos {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 30px;
-}
-img { 
-  width: 100%;
-  height: 100%;
 }
 @media (max-width: 890px) {
   .galeria .fotos {
@@ -24,4 +24,74 @@ img {
   .galeria .fotos .foto-salva {
     width: 100%;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.preview {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(232, 232, 232, 0.968627451);
+  z-index: 99999;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  padding: 4%;
+}
+.modal .close {
+  position: absolute;
+  right: 20px;
+  font-size: 32px;
+  padding: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+.modal .modalCentro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.153);
+  border: 2px solid rgba(222, 222, 222, 0.622);
+  border-radius: 12px;
+  justify-content: center;
+}
+.modal .modalCentro img {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid rgba(198, 198, 198, 0.622);
+  width: 60vw;
+  height: 70vh;
+}
+@media (max-width: 890px) {
+  .modal .modalCentro img {
+    width: 80vw;
+    height: 50vh;
+  }
+}
+@media (max-width: 480px) {
+  .modal .modalCentro img {
+    width: 80vw;
+    height: 30vh;
+  }
+}
+.modal .modalCentro p {
+  line-height: 28px;
+  padding-top: 40px;
+  font-size: 22px;
+  font-weight: 600;
 }/*# sourceMappingURL=style.css.map */
